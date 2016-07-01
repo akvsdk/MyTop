@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="actionMenuTextColor">@color/md_indigo_500</item> <!--  敲定颜色-->
+        <item name="android:textSize">18sp</item> <!--  搞掂字体大小-->
+    </style>
+
+    <style name="Theme.Transparent" parent="AppTheme">
+        <!--背景色-->
+        <item name="android:windowBackground">@color/md_indigo_500</item>
+        <!--不使用背景缓存-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <!--控制窗口位置, 非流窗口, 固定位置, 用于非全屏窗口-->
+        <item name="android:windowIsFloating">false</item>
+        <!--窗口透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--窗口无标题-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MultipleStatusView"/>
+    <style name="MultipleStatusView.Content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">#a9b7b7</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>
