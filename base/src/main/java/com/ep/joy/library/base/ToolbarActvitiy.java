@@ -1,4 +1,4 @@
-package com.ep.joy.library.weight;
+package com.ep.joy.library.base;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ep.joy.library.R;
-import com.ep.joy.library.utils.BaseAppManager;
+import com.ep.joy.library.weight.MultipleStatusView;
+import com.ep.joy.library.weight.ToolbarX;
 
 import java.lang.reflect.Field;
 

@@ -1,10 +1,11 @@
 package com.ep.jyq.mytop;
 
 
+import com.ep.joy.library.base.ToolbarActvitiy;
 import com.ep.joy.library.http.JsonResult;
+import com.ep.joy.library.utils.L;
 import com.ep.joy.library.utils.NetWorkUtil;
 import com.ep.joy.library.weight.MultipleStatusView;
-import com.ep.joy.library.weight.ToolbarActvitiy;
 
 import org.xutils.common.Callback;
 
@@ -55,6 +56,7 @@ public abstract class MyCallBack<ResultType extends JsonResult> implements Callb
     @Override
     public void onError(Throwable ex, boolean isOnCallback) {
         //可以根据公司的需求进行统一的请求网络失败的逻辑处理
+        L.e(ex, "HTTP ERROR");
         if (!NetWorkUtil.isNetConnected(App.getContext())) {
             mContext.showNoNetwork();
             mContext.showSnackbar("请检查网络链接");
