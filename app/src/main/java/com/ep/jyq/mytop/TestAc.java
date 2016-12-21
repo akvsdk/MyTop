@@ -7,9 +7,8 @@ import android.widget.Toast;
 import com.ep.joy.library.base.ToolbarActvitiy;
 import com.ep.joy.library.http.GlideProxy;
 import com.ep.joy.library.http.JsonResult;
-import com.ep.joy.library.http.NetParams;
 import com.ep.joy.library.http.UIEResult;
-import com.ep.joy.library.http.XUtil;
+import com.ep.joy.library.utils.L;
 import com.ep.joy.library.utils.SPUtil;
 import com.ep.joy.library.utils.T;
 import com.ep.jyq.mytop.bean.EEE;
@@ -19,8 +18,9 @@ import com.ep.jyq.mytop.bean.Wea;
 import com.ep.jyq.mytop.lister.MyCallBack;
 import com.ep.jyq.mytop.lister.UIECallBack;
 import com.ep.jyq.mytop.utils.Constant;
+import com.ep.jyq.mytop.utils.NetParams;
+import com.ep.jyq.mytop.utils.XUtil;
 
-import org.xutils.common.util.LogUtil;
 import org.xutils.http.cookie.DbCookieStore;
 
 import java.net.HttpCookie;
@@ -76,7 +76,7 @@ public class TestAc extends ToolbarActvitiy {
         Map<String, Object> map = new HashMap<>();
         map.put("pageSize", "5");
         map.put("pageNo", "1");
-        NetParams params = new NetParams(todoURL,map);
+        NetParams params = new NetParams(todoURL, map);
         XUtil.Post(params, new UIECallBack<UIEResult<Todo>>(this) {
 
             @Override
@@ -100,14 +100,14 @@ public class TestAc extends ToolbarActvitiy {
             protected void onSuccess(UIEResult<Login> result, boolean isCache) {
                 DbCookieStore instance = DbCookieStore.INSTANCE;
                 List<HttpCookie> cookies = instance.getCookies();
-                for (HttpCookie cookie:cookies){
-                    String name =   cookie.getName();
-                    String value =   cookie.getValue();
-                    if("JSESSIONID".equals(name)){
-                        myCookie =value;
-                        SPUtil.setValue(TestAc.this,Constant.COOKIE_NAME,myCookie);
+                for (HttpCookie cookie : cookies) {
+                    String name = cookie.getName();
+                    String value = cookie.getValue();
+                    if ("JSESSIONID".equals(name)) {
+                        myCookie = value;
+                        SPUtil.setValue(TestAc.this, SPUtil.Cookie, myCookie);
                         Constant.cookie = myCookie;
-                        LogUtil.e(myCookie);
+                        L.e(Constant.cookie);
                         break;
                     }
                 }

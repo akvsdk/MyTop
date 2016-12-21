@@ -6,6 +6,7 @@ package com.ep.jyq.mytop.utils;
  * version:  V1.0
  * Description:
  */
-public class Constant  extends com.ep.joy.library.utils.Constant{
-
+public class Constant  {
+    public static String cookie ;
+    public static String COOKIE_NAME="Cookie" ;
 }

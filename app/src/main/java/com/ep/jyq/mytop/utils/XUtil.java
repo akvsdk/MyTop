@@ -1,4 +1,4 @@
-package com.ep.joy.library.http;
+package com.ep.jyq.mytop.utils;
 
 import org.xutils.common.Callback;
 import org.xutils.common.Callback.Cancelable;
@@ -35,7 +35,7 @@ public class XUtil {
     public static <T> Cancelable Post(String url, Map<String, Object> map, Callback.CacheCallback<T> callback) {
         RequestParams params = new RequestParams(url);
         params.addHeader("apikey","6813976cf7dce7d2404e456cd56d418f");
-        // params.setCacheMaxAge(Api.CACHETIME); //缓存时间
+        params.setCacheMaxAge(0); //缓存时
         if (null != map) {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 params.addParameter(entry.getKey(), entry.getValue());

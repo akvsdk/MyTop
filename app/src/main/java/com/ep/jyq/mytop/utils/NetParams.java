@@ -1,10 +1,9 @@
-package com.ep.joy.library.http;
+package com.ep.jyq.mytop.utils;
 
 
-import com.ep.joy.library.base.BaseApplication;
-import com.ep.joy.library.utils.Constant;
 import com.ep.joy.library.utils.L;
 import com.ep.joy.library.utils.SPUtil;
+import com.ep.jyq.mytop.App;
 
 import org.xutils.http.RequestParams;
 
@@ -30,7 +29,7 @@ public class NetParams extends RequestParams {
         }
         //登陆接口 和不需要CooKie的接口
         if (isCooKie) {
-            Constant.cookie = SPUtil.getString(BaseApplication.getContext(), SPUtil.Cookie, "");
+            Constant.cookie = SPUtil.getString(App.getContext(), SPUtil.Cookie, "");
             addHeader("Cookie", "JSESSIONID=" + Constant.cookie);
             L.e(Constant.cookie);
             setUseCookie(false);
@@ -43,14 +42,16 @@ public class NetParams extends RequestParams {
 
     public NetParams(String url, Map<String, Object> map) {
         super(url);
+        setCacheMaxAge(0);
         setConnectTimeout(30 * 1000);
         if (null != map) {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 addParameter(entry.getKey(), entry.getValue());
             }
         }
-        addParameter("json","1");
-        addParameter("_jtype","json");
+        addParameter("json", "1");
+        addParameter("_jtype", "json");
+        Constant.cookie = SPUtil.getString(App.getContext(), SPUtil.Cookie, "");
         addHeader("Cookie", "JSESSIONID=" + Constant.cookie);
         L.e(Constant.cookie);
         setUseCookie(false);
