@@ -1,4 +1,4 @@
-package com.ep.jyq.mytop;
+package com.ep.jyq.mytop.lister;
 
 
 import com.ep.joy.library.base.ToolbarActvitiy;
@@ -6,6 +6,7 @@ import com.ep.joy.library.http.JsonResult;
 import com.ep.joy.library.utils.L;
 import com.ep.joy.library.utils.NetWorkUtil;
 import com.ep.joy.library.weight.MultipleStatusView;
+import com.ep.jyq.mytop.App;
 
 import org.xutils.common.Callback;
 

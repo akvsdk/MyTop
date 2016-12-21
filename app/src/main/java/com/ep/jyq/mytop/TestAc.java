@@ -7,11 +7,23 @@ import android.widget.Toast;
 import com.ep.joy.library.base.ToolbarActvitiy;
 import com.ep.joy.library.http.GlideProxy;
 import com.ep.joy.library.http.JsonResult;
+import com.ep.joy.library.http.NetParams;
+import com.ep.joy.library.http.UIEResult;
 import com.ep.joy.library.http.XUtil;
+import com.ep.joy.library.utils.SPUtil;
 import com.ep.joy.library.utils.T;
 import com.ep.jyq.mytop.bean.EEE;
+import com.ep.jyq.mytop.bean.Login;
+import com.ep.jyq.mytop.bean.Todo;
 import com.ep.jyq.mytop.bean.Wea;
+import com.ep.jyq.mytop.lister.MyCallBack;
+import com.ep.jyq.mytop.lister.UIECallBack;
+import com.ep.jyq.mytop.utils.Constant;
 
+import org.xutils.common.util.LogUtil;
+import org.xutils.http.cookie.DbCookieStore;
+
+import java.net.HttpCookie;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +38,9 @@ public class TestAc extends ToolbarActvitiy {
 
     private String url = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber";
     private String url2 = "http://apis.baidu.com/apistore/weatherservice/citylist";
+    private String urlLogin = "http://219.153.5.3:6690/uie3/upc/login.action";
+    private String todoURL = "http://219.153.5.3:6690/uie3/blm/Todo!findByPage.action";
+    private String myCookie = "";
 
     @Override
     protected int getContentViewLayoutID() {
@@ -47,8 +62,60 @@ public class TestAc extends ToolbarActvitiy {
 
     public void go(View v) {
         // dohttp();
-        getwea();
+        // getwea();
         //showLoading();
+        login();
+    }
+
+    public void gogo(View v) {
+
+        getlogin();
+    }
+
+    private void getlogin() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("pageSize", "5");
+        map.put("pageNo", "1");
+        NetParams params = new NetParams(todoURL,map);
+        XUtil.Post(params, new UIECallBack<UIEResult<Todo>>(this) {
+
+            @Override
+            protected void onSuccess(UIEResult<Todo> result, boolean isCache) {
+                Toast.makeText(TestAc.this, result.getResult().getRows().get(0).getActivity().getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void login() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("tj_username", "oatest1");
+        map.put("tj_password", "000000");
+        map.put("json", "1");
+        map.put("_jtype", "json");
+        map.put("skipHtml", "1");
+        map.put("role", "mobile");
+        XUtil.Post(urlLogin, map, new UIECallBack<UIEResult<Login>>(this) {
+
+            @Override
+            protected void onSuccess(UIEResult<Login> result, boolean isCache) {
+                DbCookieStore instance = DbCookieStore.INSTANCE;
+                List<HttpCookie> cookies = instance.getCookies();
+                for (HttpCookie cookie:cookies){
+                    String name =   cookie.getName();
+                    String value =   cookie.getValue();
+                    if("JSESSIONID".equals(name)){
+                        myCookie =value;
+                        SPUtil.setValue(TestAc.this,Constant.COOKIE_NAME,myCookie);
+                        Constant.cookie = myCookie;
+                        LogUtil.e(myCookie);
+                        break;
+                    }
+                }
+
+                T.l(result.getResult().getCname());
+            }
+        });
+
     }
 
 
