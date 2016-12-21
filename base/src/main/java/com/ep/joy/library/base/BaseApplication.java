@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.multidex.MultiDex;
 
+import com.ep.joy.library.utils.BaseDbHelper;
 import com.ep.joy.library.utils.T;
 
 import org.xutils.x;
+
+import io.realm.Realm;
 
 /**
  * APPLICATION
@@ -15,13 +18,17 @@ import org.xutils.x;
 public class BaseApplication extends Application {
 
     private static BaseApplication baseApplication;
+    private BaseDbHelper dbHelper;
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         baseApplication = this;
         x.Ext.init(this);
         T.init(this);
+        Realm.init(this);
+        dbHelper = new BaseDbHelper("Joy.realm", 1, null);
     }
 
     public static Context getContext() {

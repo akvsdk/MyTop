@@ -5,6 +5,7 @@ import com.ep.joy.library.utils.L;
 
 import org.xutils.x;
 
+
 /**
  * author   Joy
  * Date:  2016/7/1.
@@ -15,7 +16,7 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        x.Ext.setDebug(true); // 是否输出debug日志
+        x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志
         L.logInit(BuildConfig.DEBUG);
     }
 }

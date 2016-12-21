@@ -7,6 +7,7 @@ import com.orhanobut.logger.Logger;
 /**
  * 如果用于android平台，将信息记录到“LogCat”。如果用于java平台，将信息记录到“Console”
  * 使用logger封装
+ * compile 'com.orhanobut:logger:1.13'
  */
 public class L {
     public static boolean DEBUG_ENABLE =false;// 是否调试模式

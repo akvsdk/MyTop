@@ -9,6 +9,8 @@ import com.ep.joy.library.http.GlideProxy;
 import com.ep.joy.library.http.JsonResult;
 import com.ep.joy.library.http.XUtil;
 import com.ep.joy.library.utils.T;
+import com.ep.jyq.mytop.bean.EEE;
+import com.ep.jyq.mytop.bean.Wea;
 
 import java.util.HashMap;
 import java.util.List;

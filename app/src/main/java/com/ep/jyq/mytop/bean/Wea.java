@@ -1,12 +1,14 @@
 package com.ep.jyq.mytop.bean;
 
+import io.realm.RealmObject;
+
 /**
  * author   Joy
  * Date:  2016/7/1.
  * version:  V1.0
  * Description:
  */
-public class Wea {
+public class Wea  extends RealmObject{
     private String province_cn;
     private String district_cn;
     private String name_cn;
