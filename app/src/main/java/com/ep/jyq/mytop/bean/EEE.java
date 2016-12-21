@@ -1,4 +1,4 @@
-package com.ep.jyq.mytop;
+package com.ep.jyq.mytop.bean;
 
 /**
  * author   Joy

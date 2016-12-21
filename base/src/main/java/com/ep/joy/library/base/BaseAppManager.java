@@ -1,5 +1,5 @@
 
-package com.ep.joy.library.utils;
+package com.ep.joy.library.base;
 
 import android.app.Activity;
 

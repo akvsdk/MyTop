@@ -4,10 +4,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.ep.joy.library.base.ToolbarActvitiy;
 import com.ep.joy.library.http.GlideProxy;
 import com.ep.joy.library.http.JsonResult;
 import com.ep.joy.library.http.XUtil;
-import com.ep.joy.library.weight.ToolbarActvitiy;
+import com.ep.joy.library.utils.T;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,10 +44,11 @@ public class TestAc extends ToolbarActvitiy {
     }
 
     public void go(View v) {
-        //    dohttp();
+        // dohttp();
         getwea();
-        //   showLoading();
+        //showLoading();
     }
+
 
     private void getwea() {
         Map<String, String> map = new HashMap<>();
@@ -54,7 +56,10 @@ public class TestAc extends ToolbarActvitiy {
         XUtil.Get(url2, map, new MyCallBack<JsonResult<List<Wea>>>(this) {
             @Override
             protected void onSuccess(JsonResult<List<Wea>> result, boolean isCache) {
-                Toast.makeText(TestAc.this, result.getRetData().get(3).getName_cn(), Toast.LENGTH_SHORT).show();
+                if (isCache)
+                    T.l("New Toast,new Cache" + result.getRetData().get(3).getName_cn());
+                else
+                    T.l("New Toast,No Cache" + result.getRetData().get(3).getName_cn());
             }
         });
     }

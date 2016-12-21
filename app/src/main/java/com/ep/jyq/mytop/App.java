@@ -1,7 +1,7 @@
 package com.ep.jyq.mytop;
 
-import android.app.Application;
-import android.content.Context;
+import com.ep.joy.library.base.BaseApplication;
+import com.ep.joy.library.utils.L;
 
 import org.xutils.x;
 
@@ -11,18 +11,11 @@ import org.xutils.x;
  * version:  V1.0
  * Description:
  */
-public class App extends Application {
-    private static Context mContext;
-
-    public static Context getContext() {
-        return mContext;
-    }
-
+public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = this;
-        x.Ext.init(this);
         x.Ext.setDebug(true); // 是否输出debug日志
+        L.logInit(BuildConfig.DEBUG);
     }
 }

@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:joy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:joy="http://schemas.android.com/apk/res-auto"
     >
 
-   <com.ep.jyq.mytop.TopBar
-       android:id="@+id/top"
-       android:layout_width="match_parent"
-       android:layout_height="40dp"
-       joy:leftBackground="@drawable/back"
-       joy:leftTextColor="#ffffff"
-       joy:mtitle="56456"
-       joy:rightBackground="#ff0"
-       joy:rightText="More"
-       joy:rightTextColor="@color/colorPrimaryDark"
-       joy:mtitleTextColor="#000000"
-       joy:mtitleTextSize="10sp"
-       />
+    <com.ep.jyq.mytop.TopBar
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        joy:leftBackground="@drawable/back"
+        joy:leftTextColor="#ffffff"
+        joy:mtitle="56456"
+        joy:mtitleTextColor="#000000"
+        joy:mtitleTextSize="10sp"
+        joy:rightBackground="#ff0"
+        joy:rightText="More"
+        joy:rightTextColor="@color/colorPrimaryDark"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/mvp_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"/>
+
+        <Button
+            android:id="@+id/mvp_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/mvp_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </RelativeLayout>
