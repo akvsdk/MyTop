@@ -46,6 +46,19 @@ public class XUtil {
     }
 
 
+
+    /**
+     * 发送post请求
+     *
+     * @param <T>
+     */
+    public static <T> Cancelable Post(NetParams params, Callback.CacheCallback<T> callback) {
+
+        Cancelable cancelable = x.http().post(params, callback);
+        return cancelable;
+    }
+
+
     /**
      * 上传文件
      *
